@@ -1,0 +1,9 @@
+{
+  "@@locale": "en_US",
+  "appName": "Mobile Test",
+  "dashboardTitle": "Dashboard Title",
+  "connecting" : "Connecting...",
+  "connection_error" : "Connection Error\\n${error}",
+  "connection_down" : "Connection is down, trying to reconnect...",
+  "selectActiveSymbol": "Select an active symbol"
+}
