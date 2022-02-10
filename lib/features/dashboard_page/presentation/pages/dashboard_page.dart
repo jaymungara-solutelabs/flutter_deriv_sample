@@ -33,8 +33,6 @@ class _DashboardPageState extends State<DashboardPage> {
         // bloc: BlocManager.instance.fetch<ActiveSymbolCubit>(),
         bloc: _activeSymbolCubit,
         builder: (BuildContext context, ActiveSymbolState state) {
-          print("state : ${state}");
-
           if (state is ActiveSymbolLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ActiveSymbolLoadedState) {
@@ -60,7 +58,6 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   void _initializeBlocs() {
-    BlocManager.instance.register(ActiveSymbolCubit());
     _activeSymbolCubit = BlocManager.instance.fetch<ActiveSymbolCubit>();
   }
 

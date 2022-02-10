@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_api/state/connection/connection_cubit.dart'
     as connection_cubit;
+import 'package:flutter_deriv_api/state/connection/connection_cubit.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_managers/bloc_manager.dart';
 import 'package:flutter_deriv_sample/core/presentation/widgets/connection_handler.dart';
 import 'package:flutter_deriv_sample/features/dashboard_page/presentation/pages/dashboard_page.dart';
@@ -19,12 +20,23 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  late connection_cubit.ConnectionCubit _connectionCubit;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _connectionCubit =
+        BlocManager.instance.fetch<connection_cubit.ConnectionCubit>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).dashboardTitle)),
       body: BlocBuilder<connection_cubit.ConnectionCubit,
           connection_cubit.ConnectionState>(
+        bloc: _connectionCubit,
         builder:
             (BuildContext context, connection_cubit.ConnectionState state) {
           if (state is connection_cubit.ConnectionConnectedState) {
