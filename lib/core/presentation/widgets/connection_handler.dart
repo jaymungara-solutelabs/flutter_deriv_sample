@@ -51,8 +51,8 @@ class _ConnectionHandlerState extends State<ConnectionHandler> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("AlertDialog"),
-          content: Text(
+          title: const Text("AlertDialog"),
+          content: const Text(
               "Would you like to continue learning how to use Flutter alerts?"),
           actions: [
             // TextButton(

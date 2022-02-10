@@ -24,14 +24,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "active_symbols":
+            MessageLookupByLibrary.simpleMessage("Active Symbols"),
         "appName": MessageLookupByLibrary.simpleMessage("Mobile Test"),
+        "available_contracts":
+            MessageLookupByLibrary.simpleMessage("Available Contracts"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
         "connecting": MessageLookupByLibrary.simpleMessage("Connecting..."),
         "connection_down": MessageLookupByLibrary.simpleMessage(
             "Connection is down, trying to reconnect..."),
         "connection_error": m0,
-        "dashboardTitle":
+        "dashboard_title":
             MessageLookupByLibrary.simpleMessage("Dashboard Title"),
-        "selectActiveSymbol":
-            MessageLookupByLibrary.simpleMessage("Select an active symbol")
+        "market": MessageLookupByLibrary.simpleMessage("Market"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "select_active_symbol":
+            MessageLookupByLibrary.simpleMessage("Select an active symbol"),
+        "submarket": MessageLookupByLibrary.simpleMessage("Submarket"),
+        "symbol_name": MessageLookupByLibrary.simpleMessage("Symbol Name")
       };
 }

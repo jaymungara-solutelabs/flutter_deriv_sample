@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer' as logger;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +10,12 @@ import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart'
 import 'package:flutter_deriv_bloc_manager/bloc_managers/bloc_manager.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_observer.dart';
 import 'package:flutter_deriv_bloc_manager/event_dispatcher.dart';
-import 'dart:developer' as logger;
-
 import 'package:flutter_deriv_sample/app.dart';
 import 'package:flutter_deriv_sample/core/bloc_manager/state_emitters/active_symbols_state_emitter.dart';
 import 'package:flutter_deriv_sample/core/bloc_manager/state_emitters/connection_state_emitter.dart';
 import 'package:flutter_deriv_sample/core/states/active_symbol/active_symbol_cubit.dart';
+import 'package:flutter_deriv_sample/features/dashboard_page/states/available_contracts/available_contracts_cubit.dart';
+import 'package:flutter_deriv_sample/features/dashboard_page/states/price_updates/price_updates_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +48,9 @@ void registerCoreBlocs() {
   BlocManager.instance
     ..register(ConnectionCubit(ConnectionInformation(
         appId: '1089', brand: 'binary', endpoint: 'frontend.binaryws.com')))
-    ..register(ActiveSymbolCubit());
+    ..register(ActiveSymbolCubit())
+    ..register(AvailableContractsCubit())
+    ..register(PriceUpdatesCubit());
 }
 
 /// Initializes event dispatcher.

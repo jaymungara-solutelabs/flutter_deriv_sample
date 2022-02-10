@@ -61,10 +61,10 @@ class S {
   }
 
   /// `Dashboard Title`
-  String get dashboardTitle {
+  String get dashboard_title {
     return Intl.message(
       'Dashboard Title',
-      name: 'dashboardTitle',
+      name: 'dashboard_title',
       desc: '',
       args: [],
     );
@@ -100,11 +100,91 @@ class S {
     );
   }
 
+  /// `Active Symbols`
+  String get active_symbols {
+    return Intl.message(
+      'Active Symbols',
+      name: 'active_symbols',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select an active symbol`
-  String get selectActiveSymbol {
+  String get select_active_symbol {
     return Intl.message(
       'Select an active symbol',
-      name: 'selectActiveSymbol',
+      name: 'select_active_symbol',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available Contracts`
+  String get available_contracts {
+    return Intl.message(
+      'Available Contracts',
+      name: 'available_contracts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category {
+    return Intl.message(
+      'Category',
+      name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Market`
+  String get market {
+    return Intl.message(
+      'Market',
+      name: 'market',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submarket`
+  String get submarket {
+    return Intl.message(
+      'Submarket',
+      name: 'submarket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Symbol Name`
+  String get symbol_name {
+    return Intl.message(
+      'Symbol Name',
+      name: 'symbol_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
       desc: '',
       args: [],
     );

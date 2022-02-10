@@ -1,9 +1,17 @@
 {
   "@@locale": "en_US",
   "appName": "Mobile Test",
-  "dashboardTitle": "Dashboard Title",
+  "dashboard_title": "Dashboard Title",
   "connecting" : "Connecting...",
   "connection_error" : "Connection Error\\n${error}",
   "connection_down" : "Connection is down, trying to reconnect...",
-  "selectActiveSymbol": "Select an active symbol"
+  "active_symbols": "Active Symbols",
+  "select_active_symbol": "Select an active symbol",
+  "available_contracts": "Available Contracts",
+  "category": "Category",
+  "name": "Name",
+  "market": "Market",
+  "submarket": "Submarket",
+  "symbol_name": "Symbol Name",
+  "price": "Price"
 }

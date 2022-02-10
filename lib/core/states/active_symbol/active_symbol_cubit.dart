@@ -5,16 +5,13 @@ import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart'
 import 'package:flutter_deriv_api/api/common/asset_index/asset_index.dart';
 import 'package:flutter_deriv_api/api/common/models/index_contract_model.dart';
 import 'package:flutter_deriv_api/basic_api/generated/api.dart';
-import 'package:flutter_deriv_sample/core/enums.dart';
 
 part 'active_symbol_state.dart';
 
 /// Active symbol cubit for managing active symbol state.
 class ActiveSymbolCubit extends Cubit<ActiveSymbolState> {
   /// Initializes active symbol state.
-  ActiveSymbolCubit() : super(ActiveSymbolInitialState()) {
-    fetchActiveSymbols(showLoadingIndicator: true);
-  }
+  ActiveSymbolCubit() : super(ActiveSymbolInitialState());
 
   static const String _multiplierContractCode = 'multiplier';
   static const String _activeSymbolType = 'brief';
@@ -40,10 +37,12 @@ class ActiveSymbolCubit extends Cubit<ActiveSymbolState> {
         emit(ActiveSymbolLoadingState());
       }
 
-      // final List<ActiveSymbol> activeSymbols = await _getMultiplierActiveSymbols();
       _activeSymbols = await _getMultiplierActiveSymbols();
       _activeSymbols.toSet().toList();
-      emit(ActiveSymbolLoadedState(activeSymbols: _activeSymbols));
+      _selectedActiveSymbol = _activeSymbols.first;
+      emit(ActiveSymbolLoadedState(
+          activeSymbols: _activeSymbols,
+          selectedSymbol: _selectedActiveSymbol));
     } on Exception catch (e) {
       dev.log('$ActiveSymbolCubit fetchActiveSymbols() error: $e');
 

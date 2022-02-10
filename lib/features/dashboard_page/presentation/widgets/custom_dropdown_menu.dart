@@ -29,7 +29,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             border: Border.all(width: 1)),
@@ -47,7 +47,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     },
                     hint: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Text(S.of(context).selectActiveSymbol,
+                        child: Text(S.of(context).select_active_symbol,
                             style: const TextStyle(
                                 fontSize: 18, color: Colors.black87))),
                     isExpanded: true,

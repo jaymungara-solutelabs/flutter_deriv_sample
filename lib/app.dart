@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_deriv_api/services/connection/api_manager/connection_information.dart';
-import 'package:flutter_deriv_api/state/connection/connection_cubit.dart';
 import 'package:flutter_deriv_sample/features/dashboard_page/presentation/pages/root_page.dart';
 import 'package:flutter_deriv_sample/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

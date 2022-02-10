@@ -14,7 +14,8 @@ class ActiveSymbolsStateEmitter
     required Object state,
   }) {
     if (state is ActiveSymbolLoadedState) {
-      eventListener.onActiveSymbolsLoaded(state.activeSymbols);
+      eventListener.onActiveSymbolsLoaded(
+          state.activeSymbols, state.selectedSymbol);
     } else if (state is ActiveSymbolLoadingState) {
       eventListener.onActiveSymbolsLoading();
     } else if (state is ActiveSymbolErrorState) {

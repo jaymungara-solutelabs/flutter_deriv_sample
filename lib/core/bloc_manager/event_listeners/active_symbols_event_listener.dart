@@ -5,7 +5,8 @@ import 'package:flutter_deriv_bloc_manager/manager.dart';
 /// Interface for blocs that need ActiveSymbols.
 abstract class ActiveSymbolsEventListener implements BaseEventListener {
   /// on ActiveSymbols loaded event handler.
-  void onActiveSymbolsLoaded(final List<ActiveSymbol>? activeSymbols);
+  void onActiveSymbolsLoaded(
+      final List<ActiveSymbol>? activeSymbols, ActiveSymbol? selectedSymbol);
 
   /// on ActiveSymbols loading event handler.
   void onActiveSymbolsLoading();
