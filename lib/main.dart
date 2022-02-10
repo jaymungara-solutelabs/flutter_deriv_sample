@@ -33,8 +33,8 @@ void main() {
   Bloc.observer = CubitObserver();
 
   runZonedGuarded(() async {
-    // registerCoreBlocs();
-    // initializeEventDispatcher();
+    registerCoreBlocs();
+    initializeEventDispatcher();
 
     runApp(const App());
   }, (Object error, StackTrace stackTrace) {

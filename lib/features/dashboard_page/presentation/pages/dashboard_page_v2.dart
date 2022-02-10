@@ -2,7 +2,7 @@
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart';
 // import 'package:flutter_deriv_bloc_manager/bloc_managers/bloc_manager.dart';
-// import 'package:flutter_deriv_sample/core/states/active_symbol/active_symbol_cubit.dart';
+// import 'package:flutter_deriv_sample/core/state/active_symbol/active_symbol_cubit.dart';
 // import 'package:flutter_deriv_sample/features/dashboard_page/presentation/widgets/center_text_widget.dart';
 // import 'package:flutter_deriv_sample/features/dashboard_page/presentation/widgets/custom_dropdown_menu.dart';
 // import 'package:flutter_deriv_sample/generated/l10n.dart';

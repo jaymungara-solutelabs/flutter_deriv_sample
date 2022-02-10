@@ -10,6 +10,9 @@ import 'package:flutter_deriv_sample/generated/l10n.dart';
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
+  /// Route Page route name.
+  static const String routeName = 'dashboard_page';
+
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
@@ -30,6 +33,8 @@ class _DashboardPageState extends State<DashboardPage> {
         // bloc: BlocManager.instance.fetch<ActiveSymbolCubit>(),
         bloc: _activeSymbolCubit,
         builder: (BuildContext context, ActiveSymbolState state) {
+          print("state : ${state}");
+
           if (state is ActiveSymbolLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ActiveSymbolLoadedState) {
@@ -40,7 +45,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 CustomDropdown(
                     initialItem: _activeSymbolCubit.selectedActiveSymbol,
                     items: _activeSymbolCubit.activeSymbols,
-                    onItemSelected: (ActiveSymbol? i) {}),
+                    onItemSelected: (ActiveSymbol? i) {
+                      _activeSymbolCubit.getSelectedActiveSymbol(i);
+                    }),
               ],
             );
           } else if (state is ActiveSymbolErrorState) {

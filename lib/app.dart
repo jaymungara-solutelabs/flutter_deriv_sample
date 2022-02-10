@@ -15,11 +15,11 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-  late ConnectionCubit _connectionCubit;
+  // late ConnectionCubit _connectionCubit;
 
   @override
   void dispose() {
-    _connectionCubit.close();
+    // _connectionCubit.close();
     super.dispose();
   }
 
@@ -27,15 +27,15 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
 
-    _connectionCubit = ConnectionCubit(ConnectionInformation(
-        appId: '1089', brand: 'binary', endpoint: 'frontend.binaryws.com'));
+    // _connectionCubit = ConnectionCubit(ConnectionInformation(
+    //     appId: '1089', brand: 'binary', endpoint: 'frontend.binaryws.com'));
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: <BlocProvider<dynamic>>[
-          BlocProvider<ConnectionCubit>.value(value: _connectionCubit),
+          // BlocProvider<ConnectionCubit>.value(value: _connectionCubit),
         ],
         child: MaterialApp(
             title: 'Flutter Mobile Test',
