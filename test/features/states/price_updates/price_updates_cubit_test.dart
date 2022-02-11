@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../available_contracts/available_contracts_cubit_data.dart';
-import 'price_updates_cubit_data.dart';
 
 class MockPriceUpdatesCubit extends MockCubit<PriceUpdatesState>
     implements PriceUpdatesCubit {}
