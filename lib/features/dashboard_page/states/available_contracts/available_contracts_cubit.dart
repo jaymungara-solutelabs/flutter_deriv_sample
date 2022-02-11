@@ -13,6 +13,7 @@ class AvailableContractsCubit extends Cubit<AvailableContractsState>
   /// Initializes active symbol state.
   AvailableContractsCubit() : super(AvailableContractsInitialState());
 
+  /// fetch available contracts based on selected symbol
   Future<void> fetchAvailableContracts(ActiveSymbol selectedSymbol) async {
     emit(AvailableContractsLoadingState());
 

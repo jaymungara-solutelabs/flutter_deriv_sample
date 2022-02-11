@@ -5,9 +5,10 @@ import 'package:flutter_deriv_api/state/connection/connection_cubit.dart'
 import 'package:flutter_deriv_bloc_manager/bloc_managers/bloc_manager.dart';
 import 'package:flutter_deriv_sample/features/dashboard_page/presentation/pages/dashboard_page.dart';
 import 'package:flutter_deriv_sample/features/dashboard_page/presentation/widgets/center_text_widget.dart';
-import 'package:flutter_deriv_sample/generated/l10n.dart';
 
+/// RootPage which manages connection listening point
 class RootPage extends StatefulWidget {
+  /// Initialise RootPage
   const RootPage({Key? key}) : super(key: key);
 
   /// Route Page route name.
@@ -29,29 +30,28 @@ class _RootPageState extends State<RootPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).dashboard_title)),
-      body: BlocBuilder<connection_cubit.ConnectionCubit,
-          connection_cubit.ConnectionState>(
-        bloc: _connectionCubit,
-        builder:
-            (BuildContext context, connection_cubit.ConnectionState state) {
-          if (state is connection_cubit.ConnectionConnectedState) {
-            return const DashboardPage();
-          } else if (state is connection_cubit.ConnectionInitialState ||
-              state is connection_cubit.ConnectionConnectingState) {
-            return CenterTextWidget(title: S.of(context).connecting);
-          } else if (state is connection_cubit.ConnectionErrorState) {
-            return CenterTextWidget(
-                title: S.of(context).connection_error(state.error));
-          } else if (state is connection_cubit.ConnectionDisconnectedState) {
-            return CenterTextWidget(title: S.of(context).connection_down);
-          }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: const Text('Dashboard Title')),
+        body: BlocBuilder<connection_cubit.ConnectionCubit,
+            connection_cubit.ConnectionState>(
+          bloc: _connectionCubit,
+          builder:
+              (BuildContext context, connection_cubit.ConnectionState state) {
+            if (state is connection_cubit.ConnectionConnectedState) {
+              return const DashboardPage();
+            } else if (state is connection_cubit.ConnectionInitialState ||
+                state is connection_cubit.ConnectionConnectingState) {
+              return const CenterTextWidget(title: 'Connecting...');
+            } else if (state is connection_cubit.ConnectionErrorState) {
+              return CenterTextWidget(
+                  title: 'Connection Error\\n${state.error}');
+            } else if (state is connection_cubit.ConnectionDisconnectedState) {
+              return const CenterTextWidget(
+                  title: 'Connection is down, trying to reconnect...');
+            }
 
-          return Container();
-        },
-      ),
-    );
-  }
+            return Container();
+          },
+        ),
+      );
 }

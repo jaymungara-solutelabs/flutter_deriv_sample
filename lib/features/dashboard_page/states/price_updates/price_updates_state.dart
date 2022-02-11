@@ -14,6 +14,7 @@ class PriceUpdatesLoadedState extends PriceUpdatesState {
   /// Initializes
   PriceUpdatesLoadedState({required this.tick});
 
+  /// Tick value
   final Tick? tick;
 }
 

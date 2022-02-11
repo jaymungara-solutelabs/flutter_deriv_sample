@@ -14,6 +14,7 @@ class AvailableContractsLoadedState extends AvailableContractsState {
   /// Initializes
   AvailableContractsLoadedState({required this.contracts});
 
+  /// contracts
   final ContractsForSymbol? contracts;
 }
 

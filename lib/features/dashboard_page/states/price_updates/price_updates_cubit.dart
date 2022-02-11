@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart';
 import 'package:flutter_deriv_api/api/common/forget/forget_all.dart';
@@ -5,15 +7,17 @@ import 'package:flutter_deriv_api/api/common/tick/exceptions/tick_exception.dart
 import 'package:flutter_deriv_api/api/common/tick/tick.dart';
 import 'package:flutter_deriv_api/basic_api/generated/ticks_send.dart';
 import 'package:flutter_deriv_sample/core/bloc_manager/event_listeners/active_symbols_event_listener.dart';
-import 'dart:developer' as dev;
 
 part 'price_updates_state.dart';
 
+/// Price updates cubit for managing price update state.
 class PriceUpdatesCubit extends Cubit<PriceUpdatesState>
     implements ActiveSymbolsEventListener {
+  /// Initializes price updates state.
   PriceUpdatesCubit() : super(PriceUpdatesInitialState());
 
-  void subscribeToPriceUpdates(ActiveSymbol selectedSymbol) async {
+  /// fetch tick price updates based on selected symbol
+  Future<void> subscribeToPriceUpdates(ActiveSymbol selectedSymbol) async {
     try {
       emit(PriceUpdatesLoadingState());
       await _unsubscribeTick();

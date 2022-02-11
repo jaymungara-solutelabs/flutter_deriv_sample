@@ -54,8 +54,11 @@ void registerCoreBlocs() {
 }
 
 /// Initializes event dispatcher.
-void initializeEventDispatcher() => EventDispatcher(BlocManager.instance)
-  ..register<ConnectionCubit, ConnectionStateEmitter>(
-      (BaseBlocManager blocManager) => ConnectionStateEmitter(blocManager))
-  ..register<ActiveSymbolCubit, ActiveSymbolsStateEmitter>(
-      (BaseBlocManager blocManager) => ActiveSymbolsStateEmitter(blocManager));
+void initializeEventDispatcher() {
+  EventDispatcher(BlocManager.instance)
+    ..register<ConnectionCubit, ConnectionStateEmitter>(
+        (BaseBlocManager blocManager) => ConnectionStateEmitter(blocManager))
+    ..register<ActiveSymbolCubit, ActiveSymbolsStateEmitter>(
+        (BaseBlocManager blocManager) =>
+            ActiveSymbolsStateEmitter(blocManager));
+}

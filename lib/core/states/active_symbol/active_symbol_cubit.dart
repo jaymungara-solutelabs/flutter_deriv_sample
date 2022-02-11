@@ -2,8 +2,6 @@ import 'dart:developer' as dev;
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart';
-import 'package:flutter_deriv_api/api/common/asset_index/asset_index.dart';
-import 'package:flutter_deriv_api/api/common/models/index_contract_model.dart';
 import 'package:flutter_deriv_api/basic_api/generated/api.dart';
 
 part 'active_symbol_state.dart';
@@ -13,17 +11,19 @@ class ActiveSymbolCubit extends Cubit<ActiveSymbolState> {
   /// Initializes active symbol state.
   ActiveSymbolCubit() : super(ActiveSymbolInitialState());
 
-  static const String _multiplierContractCode = 'multiplier';
   static const String _activeSymbolType = 'brief';
   static const String _productType = 'basic';
 
   List<ActiveSymbol> _activeSymbols = <ActiveSymbol>[];
   ActiveSymbol? _selectedActiveSymbol;
 
+  /// get current active symbol of dropdown
   ActiveSymbol? get selectedActiveSymbol => _selectedActiveSymbol;
+
+  /// get active symbols list
   List<ActiveSymbol> get activeSymbols => _activeSymbols;
 
-  // Select Active Symbol
+  /// update Selected Active Symbol
   void getSelectedActiveSymbol(ActiveSymbol? i) {
     _selectedActiveSymbol = i;
     emit(ActiveSymbolLoadedState(
@@ -51,32 +51,11 @@ class ActiveSymbolCubit extends Cubit<ActiveSymbolState> {
   }
 
   Future<List<ActiveSymbol>> _getMultiplierActiveSymbols() async {
-    final List<ActiveSymbol> multiplierActiveSymbols = <ActiveSymbol>[];
     final List<ActiveSymbol> activeSymbols = await _fetchActiveSymbols();
-    final List<AssetIndex?>? assetIndices = await _fetchAssetIndexes();
-
-    for (final ActiveSymbol activeSymbol in activeSymbols) {
-      final AssetIndex? assetIndex = assetIndices?.firstWhere(
-          (final AssetIndex? assetIndex) =>
-              assetIndex?.symbolCode == activeSymbol.symbol);
-
-      final bool? hasContract = assetIndex?.contracts
-          ?.where((final IndexContractModel? contract) =>
-              contract?.contractTypeCode == _multiplierContractCode)
-          .isNotEmpty;
-
-      if (hasContract ?? false) {
-        multiplierActiveSymbols.add(activeSymbol);
-      }
-    }
-
-    return multiplierActiveSymbols;
+    return activeSymbols;
   }
 
   Future<List<ActiveSymbol>> _fetchActiveSymbols() =>
       ActiveSymbol.fetchActiveSymbols(const ActiveSymbolsRequest(
           activeSymbols: _activeSymbolType, productType: _productType));
-
-  Future<List<AssetIndex?>?> _fetchAssetIndexes() =>
-      AssetIndex.fetchAssetIndices(const AssetIndexRequest());
 }
