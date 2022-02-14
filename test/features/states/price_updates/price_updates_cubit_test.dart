@@ -15,41 +15,6 @@ void main() {
   group('tick stream test =>', () {
     setUpAll(() => registerFallbackValue(FakeTickStreamState()));
 
-    // test('should fetch price updates stream.', () async {
-    //   final MockPriceUpdatesCubit priceUpdateCubit = MockPriceUpdatesCubit();
-    //
-    //   whenListen(
-    //     priceUpdateCubit,
-    //     Stream<PriceUpdatesState>.fromIterable(
-    //       <PriceUpdatesState>[
-    //         PriceUpdatesInitialState(),
-    //         PriceUpdatesLoadingState(),
-    //         PriceUpdatesLoadedState(tick: ticks.first),
-    //       ],
-    //     ),
-    //   );
-    //
-    //   await expectLater(
-    //     priceUpdateCubit.stream,
-    //     emitsInOrder(
-    //       <dynamic>[
-    //         isA<PriceUpdatesInitialState>(),
-    //         isA<PriceUpdatesLoadingState>(),
-    //         isA<PriceUpdatesLoadedState>(),
-    //       ],
-    //     ),
-    //   );
-    //
-    //   final PriceUpdatesLoadedState currentState =
-    //       priceUpdateCubit.state as PriceUpdatesLoadedState;
-    //   expect(currentState, isA<PriceUpdatesLoadedState>());
-    //
-    //   expect(currentState.tick?.ask, 879.615);
-    //   expect(currentState.tick?.bid, 879.573);
-    //   expect(currentState.tick?.pipSize, 3);
-    //   expect(currentState.tick?.quote, 879.594);
-    // });
-
     final Exception exception = Exception('Price Update Cubit Exception.');
 
     blocTest<PriceUpdatesCubit, PriceUpdatesState>(
